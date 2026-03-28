@@ -1,0 +1,9 @@
+---
+- name: Print a message using Ansible
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Print hello message
+      debug:
+        msg: "Hello! This message is printed using Ansible by Rama"
