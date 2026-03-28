@@ -1,0 +1,38 @@
+---
+- name: Simple Calculator using Ansible
+  hosts: localhost
+  gather_facts: no
+
+  vars_prompt:
+    - name: num1
+      prompt: "Enter first number"
+      private: no
+
+    - name: num2
+      prompt: "Enter second number"
+      private: no
+
+    - name: operation
+      prompt: "Enter operation (add / sub / mul / div)"
+      private: no
+
+  tasks:
+    - name: Perform addition
+      debug:
+        msg: "Result: {{ num1 | int + num2 | int }}"
+      when: operation == "add"
+
+    - name: Perform subtraction
+      debug:
+        msg: "Result: {{ num1 | int - num2 | int }}"
+      when: operation == "sub"
+
+    - name: Perform multiplication
+      debug:
+        msg: "Result: {{ num1 | int * num2 | int }}"
+      when: operation == "mul"
+
+    - name: Perform division
+      debug:
+        msg: "Result: {{ num1 | int / num2 | int }}"
+      when: operation == "div"
